@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
+import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
     contacts: [],
+    filter: '',
   };
 
   handleContactAdding = ({ name, number }) => {
@@ -20,14 +22,29 @@ export class App extends Component {
     }));
   };
 
+  handleFilterChange = event => {
+    this.setState({ filter: event.currentTarget.value });
+  };
+
+  getFilteredContacts = () => {
+    const normalizedFilter = this.state.filter.toLowerCase();
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
-    let { contacts } = this.state;
+    let { filter } = this.state;
+
+    const filteredContacts = this.getFilteredContacts();
+
     return (
       <>
         <h2>Phonebook</h2>
         <Form onSubmit={this.handleContactAdding} />
         <h2>Contacts</h2>
-        <ContactList contacts={contacts} />
+        <Filter value={filter} onChange={this.handleFilterChange} />
+        <ContactList contacts={filteredContacts} />
       </>
     );
   }
