@@ -8,9 +8,10 @@ export class App extends Component {
     contacts: [],
   };
 
-  handleContactAdding = ({ name }) => {
+  handleContactAdding = ({ name, number }) => {
     const contact = {
       name,
+      number,
       id: nanoid(),
     };
 

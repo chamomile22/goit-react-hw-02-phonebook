@@ -9,8 +9,17 @@ export const ContactsForm = styled.form`
   border-radius: 6px;
 `;
 
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+`;
+
 export const InputLabel = styled.span`
-  margin-right: 10px;
+  margin-bottom: 4px;
 `;
 
 export const InputField = styled.input`
@@ -29,7 +38,7 @@ export const InputField = styled.input`
 
 export const BtnSubmit = styled.button`
   display: block;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 `;
