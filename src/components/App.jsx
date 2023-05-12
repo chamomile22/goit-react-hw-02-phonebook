@@ -49,9 +49,8 @@ export class App extends Component {
   };
 
   render() {
-    let { contacts, filter } = this.state;
+    let { filter } = this.state;
 
-    const contactsNumber = contacts.length;
     const filteredContacts = this.getFilteredContacts();
 
     return (
