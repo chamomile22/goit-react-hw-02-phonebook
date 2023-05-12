@@ -41,4 +41,17 @@ export const BtnSubmit = styled.button`
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+
+  background-color: white;
+  border-width: 1px;
+  border-radius: 4px;
+
+  transition-property: background-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: #97a168;
+  }
 `;

@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+import { prettyDOM } from '@testing-library/react';
 
 export class App extends Component {
   state = {
@@ -28,6 +29,12 @@ export class App extends Component {
         contacts: [...contacts, contact],
       }));
     }
+  };
+
+  handleContactDeleting = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+    }));
   };
 
   handleFilterChange = event => {
@@ -56,7 +63,10 @@ export class App extends Component {
         {contacts.length > 0 && (
           <Filter value={filter} onChange={this.handleFilterChange} />
         )}
-        <ContactList contacts={filteredContacts} />
+        <ContactList
+          contacts={filteredContacts}
+          onClickDelete={this.handleContactDeleting}
+        />
       </>
     );
   }

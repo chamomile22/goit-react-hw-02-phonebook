@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ContactsItem } from './ContactList.styled';
+import { ContactsItem, BtnDelete } from './ContactList.styled';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = ({ contacts, onClickDelete }) => {
   return (
     <>
       <ul>
@@ -10,6 +10,7 @@ export const ContactList = ({ contacts }) => {
             return (
               <ContactsItem key={id}>
                 {name}: {number}
+                <BtnDelete onClick={() => onClickDelete(id)}>Delete</BtnDelete>
               </ContactsItem>
             );
           })
