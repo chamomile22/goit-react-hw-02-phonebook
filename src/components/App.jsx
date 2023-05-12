@@ -49,7 +49,7 @@ export class App extends Component {
   };
 
   render() {
-    let { filter } = this.state;
+    let { contacts, filter } = this.state;
 
     const filteredContacts = this.getFilteredContacts();
 
