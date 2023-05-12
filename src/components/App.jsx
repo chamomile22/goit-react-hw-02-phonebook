@@ -17,9 +17,17 @@ export class App extends Component {
       id: nanoid(),
     };
 
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
-    }));
+    const foundName = this.state.contacts.find(
+      ({ name }) => name === contact.name
+    );
+    console.log(foundName);
+    if (foundName) {
+      alert(`${name} is already in your contacts.`);
+    } else {
+      this.setState(({ contacts }) => ({
+        contacts: [...contacts, contact],
+      }));
+    }
   };
 
   handleFilterChange = event => {
