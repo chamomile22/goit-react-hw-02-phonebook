@@ -42,8 +42,9 @@ export class App extends Component {
   };
 
   render() {
-    let { filter } = this.state;
+    let { contacts, filter } = this.state;
 
+    const contactsNumber = contacts.length;
     const filteredContacts = this.getFilteredContacts();
 
     return (
@@ -51,7 +52,10 @@ export class App extends Component {
         <h2>Phonebook</h2>
         <Form onSubmit={this.handleContactAdding} />
         <h2>Contacts</h2>
-        <Filter value={filter} onChange={this.handleFilterChange} />
+
+        {contacts.length > 0 && (
+          <Filter value={filter} onChange={this.handleFilterChange} />
+        )}
         <ContactList contacts={filteredContacts} />
       </>
     );
