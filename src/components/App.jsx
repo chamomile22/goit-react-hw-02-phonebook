@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
-import { prettyDOM } from '@testing-library/react';
 
 export class App extends Component {
   state = {
@@ -21,7 +20,7 @@ export class App extends Component {
     const foundName = this.state.contacts.find(
       ({ name }) => name === contact.name
     );
-    console.log(foundName);
+
     if (foundName) {
       alert(`${name} is already in your contacts.`);
     } else {
