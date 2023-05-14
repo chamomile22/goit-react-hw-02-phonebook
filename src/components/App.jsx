@@ -23,11 +23,11 @@ export class App extends Component {
 
     if (foundName) {
       alert(`${name} is already in your contacts.`);
-    } else {
-      this.setState(({ contacts }) => ({
-        contacts: [...contacts, contact],
-      }));
+      return;
     }
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, contact],
+    }));
   };
 
   handleContactDeleting = contactId => {
@@ -57,14 +57,17 @@ export class App extends Component {
         <h2>Phonebook</h2>
         <Form onSubmit={this.handleContactAdding} />
         <h2>Contacts</h2>
-
         {contacts.length > 0 && (
           <Filter value={filter} onChange={this.handleFilterChange} />
         )}
-        <ContactList
-          contacts={filteredContacts}
-          onClickDelete={this.handleContactDeleting}
-        />
+        {contacts.length > 0 ? (
+          <ContactList
+            contacts={filteredContacts}
+            onClickDelete={this.handleContactDeleting}
+          />
+        ) : (
+          <p>No contacts here</p>
+        )}
       </>
     );
   }
